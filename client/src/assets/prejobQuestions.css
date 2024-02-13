@@ -1,0 +1,12 @@
+.pjAnswer {
+  border-radius: 15px;
+  border: rgb(34, 100, 65) 2px solid;
+  height: 70px;
+}
+
+.pjAnswer:hover {
+  transition: background-color 0.3s ease-in-out;
+
+  background-color: rgb(150, 197, 180);
+  cursor: pointer;
+}

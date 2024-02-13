@@ -1,0 +1,18 @@
+/* Gestione layout per dimensione inputfield per telefoni,tablet,pc*/
+@media screen and (max-width: 768px) {
+  .inputWidth {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .inputWidth {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .inputWidth {
+    width: 60%;
+  }
+}
