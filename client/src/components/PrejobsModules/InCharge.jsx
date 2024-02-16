@@ -41,8 +41,7 @@ const InCharge = (props) => {
                 <Row className="p-3">
                     <h3>Inserisci la firma</h3>
                     <Col className="border p-2">
-                        <SignatureCanvas penColor='black' canvasProps={{ height: 200, className: 'myCanvas'}} ref={signatureRef} />
-                        <Button onClick={handleSave} className="me-3" variant="outline-success">Salva firma</Button>  
+                        <SignatureCanvas penColor='black' canvasProps={{ height: 200, className: 'myCanvas'}} ref={signatureRef} onEnd={handleSave}/>
                         <Button onClick={handleClear} variant="outline-danger">Cancella</Button>                 
                     </Col>
                 </Row>

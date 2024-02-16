@@ -101,11 +101,11 @@ const Prejobs = ()=>{
             signature: input
         }));
     }
-
+    //Funzione da passare a Workers come prop per gestire il salvataggio di ciascun oggetto lavoratore nello stato preJob
     const handleWorkers = (worker)=>{
         setCurrentPreJob(prevState=>({
             ...prevState,
-            workers: worker
+            workers: [...prevState.workers, worker]
         }))
     }
 
@@ -113,7 +113,7 @@ const Prejobs = ()=>{
     return (
        <Container>
             <Row className="row-cols-1">
-                <h1 className="text-center display-3 mt-5" id="redirect">Prejob Check</h1>
+                <h1 className="text-center display-3 mt-5" id="redirect">Pre-Job-Check</h1>
                 <form>
                     {currentGroup === 1 && (
                     <Col>

@@ -37,12 +37,12 @@ const Workers = (props)=>{
 
     const handleWorkers = ()=>{
         props.handleWorkers(worker)
-        signatureRef.current.clear()
         setWorker(prevState=>({
             ...prevState,
             name_surname:'',
             signature:''
         }))
+        signatureRef.current.clear()
     }
 
     return (
@@ -53,9 +53,8 @@ const Workers = (props)=>{
                     <TextField label="Nome lavoratore" name="workers" variant="outlined" value={worker.name_surname} onChange={(e)=>{setWorker(prevState=>({...prevState,   name_surname: e.target.value}))}} className="inputWidth"/>
                 </Col>
                 <Col className="border p-2">
-                <SignatureCanvas penColor='black' canvasProps={{ height: 200, className: 'myCanvas'}} ref={signatureRef} />
-                <Button onClick={handleSave} className="me-3" variant="outline-success">Salva</Button>  
-                <Button onClick={handleClear} variant="outline-danger">Cancella</Button>                 
+                    <SignatureCanvas penColor='black' canvasProps={{ height: 200, className: 'myCanvas'}} ref={signatureRef} onEnd={handleSave}/>
+                    <Button onClick={handleClear} variant="outline-danger">Cancella</Button>                 
                 </Col>
             </Row>
             <Row className="mt-5">
