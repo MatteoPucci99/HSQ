@@ -4,12 +4,13 @@ import PrejobsQuestions from "./PrejobsModules/PrejobsQuestions"
 import Generals from "./PrejobsModules/Generals"
 import InCharge from "./PrejobsModules/InCharge"
 import Note from "./PrejobsModules/Note"
+import Workers from "./PrejobsModules/Workers"
 
 
 const Prejobs = ()=>{
 
     //Gestire numOfGroup in base alle pagine di visualizzazione
-    const numOfGroup = 6
+    const numOfGroup = 5
     //Stato per gestire la visualizzazione delle pagine
     const [currentGroup, setCurrentGroup] = useState(1)
     //Oggetto preJob da inviare al server
@@ -101,6 +102,13 @@ const Prejobs = ()=>{
         }));
     }
 
+    const handleWorkers = (worker)=>{
+        setCurrentPreJob(prevState=>({
+            ...prevState,
+            workers: worker
+        }))
+    }
+
  
     return (
        <Container>
@@ -129,6 +137,11 @@ const Prejobs = ()=>{
                     <Col>
                         <InCharge company={preJob.company} inCharge={preJob.inCharge} signature={preJob.signature} updateInCharge={handleInput} updateSignature={handleSignature}/>
                     </Col>)}
+                    <Col>
+                        {currentGroup === 5 && (
+                            <Workers handleWorkers={handleWorkers}/>
+                        )}
+                    </Col>
                     
                     <div className="d-flex justify-content-end mt-4 mb-5">
                         {currentGroup > 1 && (

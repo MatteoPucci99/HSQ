@@ -28,6 +28,7 @@ const Note = (props)=>{
                         label="Note attività"
                         placeholder="Digitare..."
                         multiline
+                        rows={6}
                     />
         </Col>
     </Row>
