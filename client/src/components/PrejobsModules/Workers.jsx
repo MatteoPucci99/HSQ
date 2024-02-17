@@ -15,7 +15,7 @@ const Workers = (props)=>{
         name_surname: '',
         signature: ''
     })
-
+    //Funzione per salvare la firma nello stato. Con onEnd al termine della scrittura si aggiorna lo stato
     const handleSave = () => {
         if (signatureRef.current) {
             const workerSignature = signatureRef.current.toDataURL();
@@ -25,6 +25,7 @@ const Workers = (props)=>{
             }));
         }
     };
+    //Funzione per pulire il canvas
     const handleClear = () => {
         if (signatureRef.current) {
           signatureRef.current.clear();
@@ -34,15 +35,26 @@ const Workers = (props)=>{
         }));
         }
       };
-
+    //Funzione per verificare se il campo di testo e la firma sono stati compilati
+    const isValidData = ()=>{
+        for(const key in worker){
+            if(worker[key].trim() === ''){
+                return (false, alert('Compila tutti i campi richiesti'))
+            } 
+        }
+        return true
+    }      
+    //Salvo nel oggetto preJob tutte le informazioni raccolte durante la compilazione
     const handleWorkers = ()=>{
-        props.handleWorkers(worker)
-        setWorker(prevState=>({
-            ...prevState,
-            name_surname:'',
-            signature:''
-        }))
-        signatureRef.current.clear()
+        if(isValidData()){
+            props.handleWorkers(worker)
+            setWorker(prevState=>({
+                ...prevState,
+                name_surname:'',
+                signature:''
+            }))
+            signatureRef.current.clear()
+        }
     }
 
     return (

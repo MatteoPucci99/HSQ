@@ -148,7 +148,7 @@ const Prejobs = ()=>{
           updateSignature={handleSignature}
         />,
         <Workers handleWorkers={handleWorkers} />,
-      ];
+    ];
 
     //Componente da mostrare
     const currentComponent = components[currentGroup - 1]
