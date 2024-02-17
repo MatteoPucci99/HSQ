@@ -78,11 +78,15 @@ const Prejobs = ()=>{
     const case1 = currentGroup === 1 && (preJob.company === "" || preJob.site === "" || preJob.time === "")
     const case2 = currentGroup === 2 && (Object.values(preJob.safety).some(value=>value==="") || Object.values(preJob.activities).some(value=>value==="") || Object.values(preJob.env).some(value=>value==="") || Object.values(preJob.method).some(value=>value==="") || Object.values(preJob.dpiDpcCheck).some(value=>value===""))
     const case3 = currentGroup === 3 && preJob.note === ""
+    const case4 = currentGroup === 4 && (preJob.inCharge === "" || preJob.signature === "")
+    const case5 = currentGroup === 5 && preJob.workers.length === 0
     //Funzione per verificare che tutti i campi input siano compilati a dovere
     const isCompiled = ()=>{
-       /* if(case1){return false}
+        if(case1){return false}
         if(case2){return false}
-        if(case3){return false}*/
+        if(case3){return false}
+        if(case4){return false}
+        if(case5){return false}
         return true
     }
 
