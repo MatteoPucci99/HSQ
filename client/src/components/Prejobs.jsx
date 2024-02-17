@@ -75,21 +75,35 @@ const Prejobs = ()=>{
         }
     }
     // Casi utilizzati nella funzione di verifica dei campi input
-    const case1 = currentGroup === 1 && (preJob.company === "" || preJob.site === "" || preJob.time === "")
-    const case2 = currentGroup === 2 && (Object.values(preJob.safety).some(value=>value==="") || Object.values(preJob.activities).some(value=>value==="") || Object.values(preJob.env).some(value=>value==="") || Object.values(preJob.method).some(value=>value==="") || Object.values(preJob.dpiDpcCheck).some(value=>value===""))
-    const case3 = currentGroup === 3 && preJob.note === ""
-    const case4 = currentGroup === 4 && (preJob.inCharge === "" || preJob.signature === "")
-    const case5 = currentGroup === 5 && preJob.workers.length === 0
+    const cases = [
+        { condition: currentGroup === 1, fields: ['company', 'site', 'time','info'] },
+        { condition: currentGroup === 2, fields: ['safety', 'activities', 'env', 'method', 'dpiDpcCheck'] },
+        { condition: currentGroup === 3, fields: ['note'] },
+        { condition: currentGroup === 4, fields: ['inCharge', 'signature'] },
+        { condition: currentGroup === 5, fields: ['workers'] }
+    ]
     //Funzione per verificare che tutti i campi input siano compilati a dovere
-    const isCompiled = ()=>{
-        if(case1){return false}
-        if(case2){return false}
-        if(case3){return false}
-        if(case4){return false}
-        if(case5){return false}
-        return true
-    }
-
+    const isCompiled = () => {
+        //Se tutte le condizioni sono soddisfatte some tornerà false e con ! diventerà true. 
+        return !cases.some(({ condition, fields }) => {
+          if (condition) {
+            return fields.some(field => {
+                //Se è un array verifico che la lunghezza sia === 0
+                if (Array.isArray(preJob[field])) {
+                  return preJob[field].length === 0;
+                //Se è un oggetto verifico che almeno una delle proprietà sia stringa vuota
+                //Con Object.values trasformo l'oggetot in un array e lo itero con some per la verifica della stringa vuota
+                } else if (typeof preJob[field] === 'object') {
+                  return Object.values(preJob[field]).some(value => value === '');
+                } else {
+                //Se non è niente dei precedenti verifico che la proprietà sia una stringa vuota
+                  return preJob[field] === '';
+                }
+            });
+          }
+        });
+      };
+    
     //Funzione per gestire gli input nei vari componenti
     const handleInput = (category, value) => {
         setCurrentPreJob(prevState => ({
@@ -97,7 +111,7 @@ const Prejobs = ()=>{
             [category]: value
         }));
     };
-
+    
     //Funzione per gestire salvataggio della firma
     const handleSignature = (input)=>{
         setCurrentPreJob(prevState => ({
@@ -112,48 +126,44 @@ const Prejobs = ()=>{
             workers: [...prevState.workers, worker]
         }))
     }
+    
+    //Array dei miei componenti
+    const components = [
+        <Generals
+          company={preJob.company}
+          site={preJob.site}
+          date={preJob.date}
+          time={preJob.time}
+          info={preJob.info}
+          handleGeneral={handleInput}
+        />,
+        <PrejobsQuestions preJob={preJob} updatePrejob={handleInput} />,
+        <Note note={preJob.note} updateNote={handleInput} />,
+        <InCharge
+          company={preJob.company}
+          inCharge={preJob.inCharge}
+          signature={preJob.signature}
+          updateInCharge={handleInput}
+          updateSignature={handleSignature}
+        />,
+        <Workers handleWorkers={handleWorkers} />,
+      ];
 
+    //Componente da mostrare
+    const currentComponent = components[currentGroup - 1]
  
     return (
        <Container>
             <Row className="row-cols-1">
                 <h1 className="text-center display-3 mt-5" id="redirect">Pre-Job-Check</h1>
                 <form>
-                    {currentGroup === 1 && (
                     <Col>
-                        <Generals 
-                        company={preJob.company}
-                        site={preJob.site}
-                        date={preJob.date}
-                        time={preJob.time}
-                        info={preJob.info}
-                        handleGeneral={handleInput}/>
-                    </Col>)}
-                    {currentGroup === 2 && (
-                    <Col>
-                        <PrejobsQuestions preJob={preJob} updatePrejob={handleInput}/>
-                    </Col>)}
-                    {currentGroup === 3 && (
-                    <Col>
-                         <Note note={preJob.note} updateNote={handleInput}/>
-                    </Col>)}
-                    {currentGroup === 4 && (
-                    <Col>
-                        <InCharge company={preJob.company} inCharge={preJob.inCharge} signature={preJob.signature} updateInCharge={handleInput} updateSignature={handleSignature}/>
-                    </Col>)}
-                    <Col>
-                        {currentGroup === 5 && (
-                            <Workers handleWorkers={handleWorkers}/>
-                        )}
+                        {currentComponent}
                     </Col>
                     
                     <div className="d-flex justify-content-end mt-4 mb-5">
-                        {currentGroup > 1 && (
-                            <Button className="me-4" onClick={previousGroup}>Indietro</Button>
-                        )}
-                        {currentGroup < numOfGroup && (
-                            <Button onClick={nextGroup}>Avanti</Button>
-                        )}
+                    <Button disabled={currentGroup === 1} className="me-4" onClick={previousGroup}>Indietro</Button>
+                    <Button disabled={currentGroup === numOfGroup} onClick={nextGroup}>Avanti</Button>
                     </div>
                 </form>
             </Row>
