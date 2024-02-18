@@ -12,25 +12,23 @@ const Note = (props)=>{
     };
 
     return (
-    <Row>
-        <Col className="mt-4 text-center">
-            <Row>
-                <Col>
-                    <h1 className="mb-3">Note</h1>
-                    <span>
-                     Indicare le eventuali segnalazioni, criticità, anomalie evidenziate dai lavoratori durante la compilazione del presente Pre-Job Check
-                    </span>
-                </Col>
-            </Row>
+    <Row className="row-cols-1">
+        <Col className="mt-4">           
+            <h1 className="mb-3 text-center">Note</h1>
+            
+            <span className="fst-italic">Indicare le eventuali segnalazioni, criticità, anomalie evidenziate dai lavoratori durante la compilazione del presente Pre-Job Check</span>          
+        </Col>
+        <Col className="text-center">
             <TextField
-                        className="inputWidth mt-5"
+                        className="inputWidth mt-4"
                         name="note" value={props.note} onChange={handleInputChange}
                         label="Note attività"
                         placeholder="Digitare..."
                         multiline
                         rows={6}
-                    />
+                    />       
         </Col>
+
     </Row>
     )
 }

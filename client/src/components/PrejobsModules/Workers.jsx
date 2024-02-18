@@ -1,7 +1,8 @@
 import { TextField } from "@mui/material"
 import { useRef, useState } from "react"
-import { Button, Col, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 import  SignatureCanvas  from "react-signature-canvas";
+import Button from '@mui/material/Button';
 
 
 
@@ -58,23 +59,24 @@ const Workers = (props)=>{
     }
 
     return (
-        <>
+        <Container>
             <Row className="mt-5 row-cols-1">
-                <h2 className="text-center mb-5">Presenze lavoratori</h2>
+                <h1 className="text-center mb-5">Presenze lavoratori</h1>
                 <Col className="text-center">
                     <TextField label="Nome e cognome" name="workers" variant="outlined" value={worker.name_surname} onChange={(e)=>{setWorker(prevState=>({...prevState,   name_surname: e.target.value}))}} className="inputWidth"/>
                 </Col>
-                <Col className="border p-2 text-center mt-4">
+                <h3 className="text-center mt-4">Inserisci la firma</h3>
+                <Col className="border p-2 text-center">
                     <SignatureCanvas penColor='black' canvasProps={{ height: 200, className: 'myCanvas'}} ref={signatureRef} onEnd={handleSave}/>
-                    <Button onClick={handleClear} variant="outline-danger">Cancella</Button>                 
+                    <Button onClick={handleClear} variant="contained" color="error">Cancella</Button>                 
                 </Col>
             </Row>
-            <Row className="mt-5">
+            <Row className="mt-3 mb-5">
                 <Col className="text-center">
-                    <Button variant="success" onClick={handleWorkers}>Salva dati</Button>
+                    <Button variant="contained" onClick={handleWorkers}>Salva presenza</Button>
                 </Col>
             </Row>
-        </>
+        </Container>
   
            
         
