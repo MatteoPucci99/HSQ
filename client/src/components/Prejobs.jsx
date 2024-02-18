@@ -9,12 +9,14 @@ import Note from "./PrejobsModules/Note"
 import Workers from "./PrejobsModules/Workers"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { GlobalStyles } from "@mui/material";
-import { TfiQuoteLeft } from "react-icons/tfi";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const Prejobs = ()=>{
+
+    const navigate = useNavigate()
     //Tema colori per i buttons di materialUI
     const theme = createTheme({
         palette: {
@@ -31,6 +33,7 @@ const Prejobs = ()=>{
     });
 
     //Stato di ciascun bottone per gestire lo switch da outline a contained.
+    //buttonState sarà un array di array, in cui viene tenuto traccia dell'indice della categoria di domande e delle risposte a quella categoria di domanda
     const [buttonState, setButtonState] = useState(Array.from({ length: prejobsQuestions.length }, () => []));
 
     //Gestire numOfGroup in base alle pagine di visualizzazione
@@ -94,6 +97,9 @@ const Prejobs = ()=>{
     }
     //Funzione per gestire i gruppi di input precedenti
     const previousGroup = ()=>{
+        if(currentGroup === 1 ){
+            navigate("/")
+        }
         if(currentGroup>0){
             setCurrentGroup(currentGroup-1)
         }
@@ -151,11 +157,11 @@ const Prejobs = ()=>{
             workers: [...prevState.workers, worker]
         }))
     }
-    
+    //Funzione per gestire lo stato dei buttons: in base alla risposta data il button switcha da outlined a contained
     const handleButtonState = (categoryIndex, questionIndex,option)=>{
-        //Clono stato dei buttons
+    //Clono stato dei buttons
     const updateButtonState = [...buttonState]
-    //Imposto lo stato del button su true e gli altri su false
+    //Imposto lo stato del button su true e gli altri su false in base all'uguaglianza
     updateButtonState[categoryIndex][questionIndex] = {
       Si: option === 'Si',
       No: option === 'No',
@@ -164,6 +170,7 @@ const Prejobs = ()=>{
     //Aggiorno lo stato
     setButtonState(updateButtonState)
     }
+
     //Array dei miei componenti
     const components = [
         <Generals
@@ -210,7 +217,7 @@ const Prejobs = ()=>{
                         </Col>
 
                         <div className="d-flex justify-content-end mt-4 mb-5">
-                            <Button disabled={currentGroup === 1} className="me-4" onClick={previousGroup} variant="contained" color="primary" >Indietro</Button>
+                            <Button className="me-4" onClick={previousGroup} variant="contained" color="primary" >Indietro</Button>
                             <Button disabled={currentGroup === numOfGroup} onClick={nextGroup} variant="contained" color="primary" >Avanti</Button>                    
                         </div>
                     </form>

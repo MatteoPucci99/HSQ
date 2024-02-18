@@ -71,14 +71,14 @@ const Prejobs = (props) => {
           <h1 className="mb-5 mt-4 text-center">{prejobsQuestions[currentCategoryIndex].description}</h1>         
           {prejobsQuestions[currentCategoryIndex].questions.map(
             (question, qIndex) => (
-            <Row key={qIndex} className="mt-4 py-4 border-secondary border-bottom">
+            <Row key={qIndex} className="mt-5 py-4 mx-1 questions">
                 <Col xs={12} md={7} key={`${qIndex}-a`}>
-                    <p>{question.question}</p>
+                    <p className="fw-bold">{question.question}</p>
                 </Col>
                 <Col className="ms-3" key={`${qIndex}-b`}>
                     <Row className="w-100 h-100" key={`${qIndex}-c`}>
-                        <Col className="d-flex align-items-center justify-content-center me-3" key={`${qIndex}-d`}><Button variant={props.buttonState[currentCategoryIndex][qIndex]?.Si ? "contained" : "outlined"} onClick={()=>questionType(prejobsQuestions[currentCategoryIndex].description, qIndex, 'Si','Si')}>Si</Button></Col>
-                        <Col className="d-flex align-items-center justify-content-center me-3" key={`${qIndex}-e`} ><Button variant={props.buttonState[currentCategoryIndex][qIndex]?.No ? "contained" : "outlined"} onClick={()=>questionType(prejobsQuestions[currentCategoryIndex].description, qIndex, 'No','No')}>No</Button></Col>
+                        <Col className="d-flex align-items-center justify-content-center" key={`${qIndex}-d`}><Button variant={props.buttonState[currentCategoryIndex][qIndex]?.Si ? "contained" : "outlined"} onClick={()=>questionType(prejobsQuestions[currentCategoryIndex].description, qIndex, 'Si','Si')}>Si</Button></Col>
+                        <Col className="d-flex align-items-center justify-content-center" key={`${qIndex}-e`} ><Button variant={props.buttonState[currentCategoryIndex][qIndex]?.No ? "contained" : "outlined"} onClick={()=>questionType(prejobsQuestions[currentCategoryIndex].description, qIndex, 'No','No')}>No</Button></Col>
                         <Col className="d-flex align-items-center justify-content-center" key={`${qIndex}-f`} ><Button variant={props.buttonState[currentCategoryIndex][qIndex]?.NA ? "contained" : "outlined"} onClick={()=>questionType(prejobsQuestions[currentCategoryIndex].description, qIndex, 'N.A.','N.A.')}>N.A.</Button></Col>
                     </Row>
                 </Col>
