@@ -2,12 +2,14 @@ import { useState } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import Button from '@mui/material/Button';
 import PrejobsQuestions from "./PrejobsModules/PrejobsQuestions"
+import prejobsQuestions from "../content/preJobs/prejobs";
 import Generals from "./PrejobsModules/Generals"
 import InCharge from "./PrejobsModules/InCharge"
 import Note from "./PrejobsModules/Note"
 import Workers from "./PrejobsModules/Workers"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { GlobalStyles } from "@mui/material";
+import { TfiQuoteLeft } from "react-icons/tfi";
 
 
 
@@ -26,7 +28,10 @@ const Prejobs = ()=>{
             main: '#027d75ff',
           },
         },
-      });
+    });
+
+    //Stato di ciascun bottone per gestire lo switch da outline a contained.
+    const [buttonState, setButtonState] = useState(Array.from({ length: prejobsQuestions.length }, () => []));
 
     //Gestire numOfGroup in base alle pagine di visualizzazione
     const numOfGroup = 5
@@ -147,6 +152,18 @@ const Prejobs = ()=>{
         }))
     }
     
+    const handleButtonState = (categoryIndex, questionIndex,option)=>{
+        //Clono stato dei buttons
+    const updateButtonState = [...buttonState]
+    //Imposto lo stato del button su true e gli altri su false
+    updateButtonState[categoryIndex][questionIndex] = {
+      Si: option === 'Si',
+      No: option === 'No',
+      NA: option === 'N.A.'
+    }
+    //Aggiorno lo stato
+    setButtonState(updateButtonState)
+    }
     //Array dei miei componenti
     const components = [
         <Generals
@@ -157,7 +174,7 @@ const Prejobs = ()=>{
           info={preJob.info}
           handleGeneral={handleInput}
         />,
-        <PrejobsQuestions preJob={preJob} updatePrejob={handleInput} />,
+        <PrejobsQuestions preJob={preJob} updatePrejob={handleInput} updateButton={handleButtonState} buttonState={buttonState}/>,
         <Note note={preJob.note} updateNote={handleInput} />,
         <InCharge
           company={preJob.company}
@@ -171,6 +188,9 @@ const Prejobs = ()=>{
 
     //Componente da mostrare
     const currentComponent = components[currentGroup - 1]
+
+
+   
  
     return (
        <Container>
