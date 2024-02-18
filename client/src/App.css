@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url(./assets/inputfield.css);
 @import url(./assets/prejobQuestions.css);
 @import url(./assets/canvas.css);
+@import url(./assets/homeCards.css);
+@import url(./assets/prejobs.css);
+
+body {
+  font-family: "Montserrat", sans-serif !important;
+}

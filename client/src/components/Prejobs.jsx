@@ -1,13 +1,32 @@
 import { useState } from "react"
-import { Button, Col, Container, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
+import Button from '@mui/material/Button';
 import PrejobsQuestions from "./PrejobsModules/PrejobsQuestions"
 import Generals from "./PrejobsModules/Generals"
 import InCharge from "./PrejobsModules/InCharge"
 import Note from "./PrejobsModules/Note"
 import Workers from "./PrejobsModules/Workers"
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { GlobalStyles } from "@mui/material";
+
+
 
 
 const Prejobs = ()=>{
+    //Tema colori per i buttons di materialUI
+    const theme = createTheme({
+        palette: {
+          primary: {
+            main: '#027d75ff',
+          },
+          secondary: {
+            main: '#ff4081',
+          },
+          focus: {
+            main: '#027d75ff',
+          },
+        },
+      });
 
     //Gestire numOfGroup in base alle pagine di visualizzazione
     const numOfGroup = 5
@@ -155,19 +174,28 @@ const Prejobs = ()=>{
  
     return (
        <Container>
-            <Row className="row-cols-1">
-                <h1 className="text-center display-3 mt-5" id="redirect">Pre-Job-Check</h1>
-                <form>
-                    <Col>
-                        {currentComponent}
-                    </Col>
-                    
-                    <div className="d-flex justify-content-end mt-4 mb-5">
-                    <Button disabled={currentGroup === 1} className="me-4" onClick={previousGroup}>Indietro</Button>
-                    <Button disabled={currentGroup === numOfGroup} onClick={nextGroup}>Avanti</Button>
+            <ThemeProvider theme={theme}>
+            <GlobalStyles styles={{
+              '.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: theme.palette.focus.main,
+              },
+            }} />
+                <Row className="row-cols-1">
+                    <div id="titleContainer" className="d-flex justify-content-center align-items-center">
+                        <h1 id="title"><span style={{color:'#027d75ff'}}>Pre Job</span> Check</h1>
                     </div>
-                </form>
-            </Row>
+                    <form className="mt-4">
+                        <Col>
+                            {currentComponent}
+                        </Col>
+
+                        <div className="d-flex justify-content-end mt-4 mb-5">
+                            <Button disabled={currentGroup === 1} className="me-4" onClick={previousGroup} variant="contained" color="primary" >Indietro</Button>
+                            <Button disabled={currentGroup === numOfGroup} onClick={nextGroup} variant="contained" color="primary" >Avanti</Button>                    
+                        </div>
+                    </form>
+                </Row>
+            </ThemeProvider>    
 
             
        </Container>
