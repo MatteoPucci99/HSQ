@@ -1,9 +1,9 @@
-#titleContainer {
+.titleContainer {
   background-color: #f3f2f7ff;
   height: 100px;
 }
 
-#title {
+.title {
   font-size: 36px;
   font-weight: 700;
   color: rgb(70, 70, 70);

@@ -213,7 +213,7 @@ const Prejobs = ()=>{
    
  
     return (
-       <Container>
+       <Container fluid>
             <ThemeProvider theme={theme}>
             <GlobalStyles styles={{
               '.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -221,8 +221,8 @@ const Prejobs = ()=>{
               },
             }} />
                 <Row className="row-cols-1">
-                    <div id="titleContainer" className="d-flex justify-content-center align-items-center">
-                        <h1 id="title"><span style={{color:'#027d75ff'}}>Pre Job</span> Check</h1>
+                    <div className="d-flex justify-content-center align-items-center titleContainer">
+                        <h1 className="title"><span style={{color:'#027d75ff'}}>Pre Job</span> Check</h1>
                     </div>
                     <form className="mt-4">
                         <Col>
