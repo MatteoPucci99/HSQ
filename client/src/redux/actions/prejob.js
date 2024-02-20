@@ -24,6 +24,7 @@ export const sendPrejobAction = (obj) => {
           type: SEND_PREJOB,
           payload: preJob,
         });
+        dispatch(getPrejobAction());
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +35,7 @@ export const sendPrejobAction = (obj) => {
 //Action per ottenere tutti i prejobs
 export const getPrejobAction = () => {
   return async (dispatch) => {
-    fetch(API)
+    fetch(`${API}/savedPrejobs`)
       .then((res) => {
         if (res.ok) {
           return res.json();

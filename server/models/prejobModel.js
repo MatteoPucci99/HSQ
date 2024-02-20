@@ -46,7 +46,7 @@ const prejobSchema = new mongoose.Schema({
   note: String,
   inCharge: String,
   signature: String,
-  workers: [String],
+  workers: [],
 });
 
 const Prejob = mongoose.model("Session", prejobSchema);
