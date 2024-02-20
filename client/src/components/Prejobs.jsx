@@ -195,6 +195,7 @@ const Prejobs = ()=>{
 
     //Componente da mostrare
     const currentComponent = components[currentGroup - 1]
+    
 
 
    

@@ -3,6 +3,8 @@ import { useRef, useState } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import  SignatureCanvas  from "react-signature-canvas";
 import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 
 
@@ -68,12 +70,14 @@ const Workers = (props)=>{
                 <h3 className="text-center mt-4">Inserisci la firma</h3>
                 <Col className="border p-2 text-center">
                     <SignatureCanvas penColor='black' canvasProps={{ height: 200, className: 'myCanvas'}} ref={signatureRef} onEnd={handleSave}/>
-                    <Button onClick={handleClear} variant="contained" color="error">Cancella</Button>                 
+                    <div className="d-flex justify-content-evenly mt-4"> 
+                        <Button onClick={handleClear} variant="contained" color="error" startIcon={<DeleteIcon/>}>Cancella</Button>                 
+                        <Button variant="contained" onClick={handleWorkers} endIcon={<CloudUploadIcon/>}>Salva presenza</Button>
+                    </div>
                 </Col>
             </Row>
             <Row className="mt-3 mb-5">
                 <Col className="text-center">
-                    <Button variant="contained" onClick={handleWorkers}>Salva presenza</Button>
                 </Col>
             </Row>
         </Container>

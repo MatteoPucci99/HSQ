@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/Home";
 import Prejobs from "./components/Prejobs";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/prejobs" element={<Prejobs />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </>
     </BrowserRouter>

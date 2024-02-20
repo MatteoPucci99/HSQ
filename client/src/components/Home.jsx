@@ -22,7 +22,7 @@ const Home = ()=>{
                     </Link>                    
                 </Col>
                 <Col className="mt-3">
-                    <Link to="/prejobs" style={{textDecoration:'none', color:'white'}}>
+                    <Link to="/dashboard" style={{textDecoration:'none', color:'white'}}>
                         <div className="cards d-flex align-items-center justify-content-center">
                             Dashboard
                         </div>

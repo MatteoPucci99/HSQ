@@ -30,6 +30,8 @@ const InCharge = (props) => {
         }
       };
 
+      
+
     return (
         <Row className="row-cols-1">
             <Col className="px-4">
