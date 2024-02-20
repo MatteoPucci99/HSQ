@@ -4,6 +4,7 @@
 @import url(./assets/canvas.css);
 @import url(./assets/homeCards.css);
 @import url(./assets/prejobs.css);
+@import url(./assets/alert.css);
 
 body {
   font-family: "Montserrat", sans-serif !important;

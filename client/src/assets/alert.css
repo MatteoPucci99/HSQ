@@ -1,0 +1,27 @@
+.alert {
+  position: fixed !important;
+  top: 50px;
+  right: 0px;
+  animation: fadeInOut 1.5s ease;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    right: -275px;
+  }
+  30% {
+    opacity: 1;
+    right: 0px;
+  }
+
+  70% {
+    opacity: 1;
+    right: 0px;
+  }
+
+  100% {
+    opacity: 0;
+    right: 0px;
+  }
+}

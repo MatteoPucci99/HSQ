@@ -10,14 +10,15 @@ import Workers from "./PrejobsModules/Workers"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { GlobalStyles } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux"
+import {useDispatch} from "react-redux"
 import { sendPrejobAction } from "../redux/actions/prejob";
+import AlertWarning from "./Alert/AlertWarning";
 
 
 
 
 const Prejobs = ()=>{
-    
+    const [show, setShow] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     //Tema colori per i buttons di materialUI
@@ -38,7 +39,6 @@ const Prejobs = ()=>{
     //Stato di ciascun bottone per gestire lo switch da outline a contained.
     //buttonState sarà un array di array, in cui viene tenuto traccia dell'indice della categoria di domande e delle risposte a quella categoria di domanda
     const [buttonState, setButtonState] = useState(Array.from({ length: prejobsQuestions.length }, () => []));
-
     //Gestire numOfGroup in base alle pagine di visualizzazione
     const numOfGroup = 5
     //Stato per gestire la visualizzazione delle pagine
@@ -94,13 +94,17 @@ const Prejobs = ()=>{
     const [preJob, setCurrentPreJob] = useState(initialState)
     //Funzione per gestire i gruppi di input successivi
     const nextGroup = ()=>{
-        if(currentGroup === numOfGroup){
+        if(currentGroup === numOfGroup && isCompiled()){
           dispatch(sendPrejobAction(preJob))
           setCurrentPreJob(initialState)
           setCurrentGroup(1)
-        }
+          return;
+        } 
         if(currentGroup < numOfGroup && isCompiled()){
             setCurrentGroup(currentGroup+1)
+        } else {
+          setShow(true);
+          setTimeout(()=>{setShow(false)},1500)
         }
     }
     //Funzione per gestire i gruppi di input precedenti
@@ -224,7 +228,11 @@ const Prejobs = ()=>{
                         <Col>
                             {currentComponent}
                         </Col>
-
+                        {show && (
+                          <Col className="alert">
+                            <AlertWarning text={'Compila tutti i campi richiesti !'}/>                          
+                          </Col>                       
+                        )}
                         <div className="d-flex justify-content-end mt-4 mb-5">
                             <Button className="me-4" onClick={previousGroup} variant="contained" color="primary" >Indietro</Button>
                             <Button  onClick={nextGroup} variant="contained" color="primary" >{currentGroup === numOfGroup ? 'Fine' : 'Avanti'}</Button>                    
