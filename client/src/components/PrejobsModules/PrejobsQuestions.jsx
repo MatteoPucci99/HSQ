@@ -10,10 +10,6 @@ import Button from '@mui/material/Button';
 const Prejobs = (props) => {
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
 
-  
-
-
-
 
   //Funzione per gestire lo stato preJob di Prejobs
   const handleAnswerSelection = (category, questionIndex, answer,option) => {   
@@ -92,9 +88,7 @@ const Prejobs = (props) => {
             <TfiArrowCircleLeft className="me-3" style={{fontSize:'2em', cursor:'pointer'}} onClick={()=>{handleScroll();handlePrevCategory()}} href="#redirect" />                  
         )}
         {currentCategoryIndex < prejobsQuestions.length-1 && (
-            <TfiArrowCircleRight style={{fontSize:'2em', cursor:'pointer'}}
-            onClick={()=>{handleScroll();handleNextCategory()}} href="#redirect"
-            />         
+            <TfiArrowCircleRight style={{fontSize:'2em', cursor:'pointer'}} onClick={()=>{handleScroll();handleNextCategory()}}/>         
         )}
       </div>
     </>
