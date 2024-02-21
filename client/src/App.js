@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPrejobAction } from "./redux/actions/prejob";
 import { GlobalStyles, ThemeProvider, createTheme } from "@mui/material";
-import Footer from "./components/Prova";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +43,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/prejobs" element={<Prejobs />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/prova" element={<Footer />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
