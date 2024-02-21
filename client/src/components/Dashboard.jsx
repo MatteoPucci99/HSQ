@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { DataGrid } from '@mui/x-data-grid';
+import { Typography } from '@mui/material';
 import { format} from 'date-fns';
 import itLocale from 'date-fns/locale/it';
 import { Col, Container, Row } from "react-bootstrap";
@@ -7,6 +8,8 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {  PDFDownloadLink } from '@react-pdf/renderer';
 import PdfContent from "./Pdf/PrejobPdf";
+import DownloadIcon from '@mui/icons-material/Download';
+
 
 
 const Dashboard = ()=>{
@@ -23,36 +26,38 @@ const Dashboard = ()=>{
         time: formatSingleDate(el.time)
     }))
     
-    //Impostazioe delle colonne e delle righe per la Grid 
+    //Impostazioe delle colonne e delle righe per la Grid. Passo al PdfContent i contenuti della singola cella
     const rows = formattedPrejobsWithDate
     const columns = [
-        { field: 'company', headerName: 'Impresa', width: 130 },
-        { field: 'inCharge', headerName: 'Preposto', width: 130 },
-        { field: 'site', headerName: 'Cantiere', width: 130 },
-        { field: 'time', headerName: 'Data e ora', width: 300 },
+        { field: 'company', headerName: 'Impresa', width:200},
+        { field: 'inCharge', headerName: 'Preposto', width: 150 },
+        { field: 'site', headerName: 'Cantiere', width: 200 },
+        { field: 'time', headerName: 'Data e ora', width: 250 },
         {
             field: 'downloadPdf',
-            headerName: 'Download PDF',
+            headerName: 'PDF',
             width: 150,
             renderCell: (params) => {
                 const prejobData = params.row;
                 return (
-                    <PDFDownloadLink
-                        document={<PdfContent prejobData={prejobData} />}
-                        fileName={`prejob_${prejobData._id}.pdf`}
-                    >
-                        {({ loading }) => (loading ? 'Caricamento...' : 'Download')}
-                    </PDFDownloadLink>
+                    <Button  variant='contained' color='primary' className="pdfContainer p-1">
+                        <DownloadIcon/>
+                        <PDFDownloadLink
+                            document={<PdfContent prejobData={prejobData} />}
+                            fileName={`prejob_${prejobData._id}.pdf`}
+                            style={{textDecoration:'none', color:'white', fontWeight:'bold'}}
+                        >
+                            {({ loading }) => (loading ? '...' : '')}
+                        </PDFDownloadLink>
+                    </Button>
                 );
             },
         },
     ];
     const getRowId = (row) => row._id;
-    
-    //const createPdf = ()=>(
-    //    <PdfContent prejobData={formattedPrejobsWithDate}/>
-    //)
 
+ 
+    
     return (
      <Container fluid className="text-center">    
         <Row className="row-cols-1" style={{ height: 400 }}>
@@ -69,21 +74,25 @@ const Dashboard = ()=>{
                         paginationModel: { page: 0, pageSize: 5 },
                     },
                     }}
-                    pageSizeOptions={[5, 10]}
+                    pageSizeOptions={[5, 10, 15]}
                     checkboxSelection
+                    sx={{
+                        '& .MuiTablePagination-selectLabel':{
+                            marginBottom: '0px',
+                            display:'block !important'
+                        },
+                        '& .MuiTablePagination-displayedRows' : {
+                            marginBottom: '0px'
+                        },
+                       '& .MuiInputBase-root.MuiInputBase-colorPrimary.MuiTablePagination-input' : {
+                            display:'flex !important',   
+                       }
+                       
+                    }}
                 />
             </Col>
             <Col className="mt-4 text-end">
                 <Button variant="contained" onClick={()=>navigate('/')} color="primary">Home</Button>
-            </Col>
-            <Col>
-            {/* <div>
-                <PDFDownloadLink document={createPdf()} fileName="somename.pdf">
-                  {({ blob, url, loading, error }) =>
-                    loading ? 'Loading document...' : 'Download now!'
-                  }
-                </PDFDownloadLink>
-            </div> */}
             </Col>
         </Row>
      </Container>   
