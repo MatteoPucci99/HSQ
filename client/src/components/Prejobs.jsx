@@ -24,13 +24,14 @@ const Prejobs = ()=>{
  
     //Stato di ciascun bottone per gestire lo switch da outline a contained.
     //buttonState sarà un array di array, in cui viene tenuto traccia dell'indice della categoria di domande e delle risposte a quella categoria di domanda
-    const [buttonState, setButtonState] = useState(Array.from({ length: prejobsQuestions.length }, () => []));
+    const initialButtonState = Array.from({ length: prejobsQuestions.length }, () => [])
+    const [buttonState, setButtonState] = useState(initialButtonState);
     //Gestire numOfGroup in base alle pagine di visualizzazione
     const numOfGroup = 5
     //Stato per gestire la visualizzazione delle pagine
     const [currentGroup, setCurrentGroup] = useState(1) 
     //Oggetto preJob da inviare al server
-    const initialState = {
+    const initialPrejob = {
       company: "",
         site: "",
         time: new Date(),
@@ -77,13 +78,14 @@ const Prejobs = ()=>{
         signature: "",
         workers: [],
     }
-    const [preJob, setCurrentPreJob] = useState(initialState)
+    const [preJob, setCurrentPreJob] = useState(initialPrejob)
     //Funzione per gestire i gruppi di input successivi
     const nextGroup = ()=>{
         if(currentGroup === numOfGroup && isCompiled()){
           dispatch(sendPrejobAction(preJob))
-          setCurrentPreJob(initialState)
+          setCurrentPreJob(initialPrejob)
           setCurrentGroup(1)
+          setButtonState(initialButtonState)
           return;
         } 
         if(currentGroup < numOfGroup && isCompiled()){
