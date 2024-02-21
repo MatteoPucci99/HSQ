@@ -62,7 +62,7 @@ const Workers = (props)=>{
 
     return (
         <Container>
-            <Row className="mt-5 row-cols-1">
+            <Row className="mt-5 row-cols-1 mb-5">
                 <h1 className="text-center mb-5">Presenze lavoratori</h1>
                 <Col className="text-center">
                     <TextField label="Nome e cognome" name="workers" variant="outlined" value={worker.name_surname} onChange={(e)=>{setWorker(prevState=>({...prevState,   name_surname: e.target.value}))}} className="inputWidth"/>
@@ -70,16 +70,12 @@ const Workers = (props)=>{
                 <h3 className="text-center mt-4">Inserisci la firma</h3>
                 <Col className="border p-2 text-center">
                     <SignatureCanvas penColor='black' canvasProps={{ height: 200, className: 'myCanvas'}} ref={signatureRef} onEnd={handleSave}/>
-                    <div className="d-flex justify-content-evenly mt-4"> 
-                        <Button onClick={handleClear} variant="contained" color="error" startIcon={<DeleteIcon/>}>Cancella</Button>                 
+                    <div className="d-flex justify-content-evenly justify-content-md-center mt-4"> 
+                        <Button onClick={handleClear} variant="contained" className="me-md-2" color="error" startIcon={<DeleteIcon/>}>Cancella</Button>                 
                         <Button variant="contained" onClick={handleWorkers} endIcon={<CloudUploadIcon/>}>Salva presenza</Button>
                     </div>
                 </Col>
-            </Row>
-            <Row className="mt-3 mb-5">
-                <Col className="text-center">
-                </Col>
-            </Row>
+            </Row>         
         </Container>
   
            

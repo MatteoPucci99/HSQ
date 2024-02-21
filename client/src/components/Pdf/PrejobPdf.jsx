@@ -1,4 +1,4 @@
-import {  StyleSheet, Document, Page, Text} from '@react-pdf/renderer';
+import {  StyleSheet, Document, Page, Text,Image} from '@react-pdf/renderer';
 import prejobsQuestions from '../../content/preJobs/prejobs';
 import { Col, Row } from 'react-bootstrap';
 
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
       },
     image: {
+      width: 300,
       marginVertical: 15,
       marginHorizontal: 100,
     },
@@ -67,7 +68,7 @@ const PdfContent = (props)=>{
           <Text style={styles.text}>
             {props.prejobData.info}
           </Text>
-          <Text style={styles.subtitle}>
+          <Text style={styles.subtitle}>ß
             Documentazione safety
           </Text>        
             {props.prejobData.safety && Object.keys(props.prejobData.safety).map((key, index) => (
@@ -112,9 +113,13 @@ const PdfContent = (props)=>{
                   <Text style={styles.answer}>{props.prejobData.dpiDpcCheck[key]}</Text>
                 </Row>               
             ))}
-         
-         
-          
+            <Text style={styles.subtitle}>
+                Firma del preposto
+            </Text>
+            <Image
+                style={styles.image}
+                src={props.prejobData.signature}
+            />
           <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
             `${pageNumber} / ${totalPages}`
           )} fixed />

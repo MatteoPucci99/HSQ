@@ -8,14 +8,14 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getPrejobAction } from "./redux/actions/prejob";
 import { GlobalStyles, ThemeProvider, createTheme } from "@mui/material";
-
+import { itIT } from "@mui/material/locale";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPrejobAction());
   }, []);
   //Tema colori per i buttons di materialUI
-  const theme = createTheme({
+  const theme = createTheme(itIT, {
     palette: {
       primary: {
         main: "#027d75ff",

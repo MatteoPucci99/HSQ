@@ -16,7 +16,9 @@ const Note = (props)=>{
         <Col className="mt-4">           
             <h1 className="mb-3 text-center">Note</h1>
             
-            <span className="fst-italic">Indicare le eventuali segnalazioni, criticità, anomalie evidenziate dai lavoratori durante la compilazione del presente Pre-Job Check</span>          
+            <span className="fst-italic">
+                Indicare le eventuali segnalazioni, criticità, anomalie evidenziate dai lavoratori durante la compilazione del presente Pre-Job Check
+            </span>          
         </Col>
         <Col className="text-center">
             <TextField

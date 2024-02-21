@@ -68,8 +68,8 @@ const Prejobs = (props) => {
           {prejobsQuestions[currentCategoryIndex].questions.map(
             (question, qIndex) => (
             <Row key={qIndex} className="mt-5 py-4 mx-1 questions">
-                <Col xs={12} md={7} key={`${qIndex}-a`}>
-                    <p className="fw-bold">{question.question}</p>
+                <Col xs={12} key={`${qIndex}-a`}>
+                    <p className="fw-bold text-md-center">{question.question}</p>
                 </Col>
                 <Col className="ms-3" key={`${qIndex}-b`}>
                     <Row className="w-100 h-100" key={`${qIndex}-c`}>

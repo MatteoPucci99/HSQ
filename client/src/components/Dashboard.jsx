@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux"
 import { DataGrid } from '@mui/x-data-grid';
-import { Typography } from '@mui/material';
 import { format} from 'date-fns';
 import itLocale from 'date-fns/locale/it';
 import { Col, Container, Row } from "react-bootstrap";
@@ -40,14 +39,14 @@ const Dashboard = ()=>{
             renderCell: (params) => {
                 const prejobData = params.row;
                 return (
-                    <Button  variant='contained' color='primary' className="pdfContainer p-1">
-                        <DownloadIcon/>
+                    <Button  variant='contained' color='primary' type="button" className="pdfContainer p-1">
+                        {/* <DownloadIcon/> */}
                         <PDFDownloadLink
                             document={<PdfContent prejobData={prejobData} />}
                             fileName={`prejob_${prejobData._id}.pdf`}
                             style={{textDecoration:'none', color:'white', fontWeight:'bold'}}
                         >
-                            {({ loading }) => (loading ? '...' : '')}
+                            {({ loading }) => (loading ? '...' : (<DownloadIcon/>))}
                         </PDFDownloadLink>
                     </Button>
                 );
@@ -88,7 +87,8 @@ const Dashboard = ()=>{
                             display:'flex !important',   
                        }
                        
-                    }}
+                    }}                 
+                    
                 />
             </Col>
             <Col className="mt-4 text-end">
