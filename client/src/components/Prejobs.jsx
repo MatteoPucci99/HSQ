@@ -21,21 +21,7 @@ const Prejobs = ()=>{
     const [show, setShow] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    //Tema colori per i buttons di materialUI
-    const theme = createTheme({
-        palette: {
-          primary: {
-            main: '#027d75ff',
-          },
-          secondary: {
-            main: '#ff4081',
-          },
-          focus: {
-            main: '#027d75ff',
-          },
-        },
-    });
-
+ 
     //Stato di ciascun bottone per gestire lo switch da outline a contained.
     //buttonState sarà un array di array, in cui viene tenuto traccia dell'indice della categoria di domande e delle risposte a quella categoria di domanda
     const [buttonState, setButtonState] = useState(Array.from({ length: prejobsQuestions.length }, () => []));
@@ -213,36 +199,27 @@ const Prejobs = ()=>{
    
  
     return (
-       <Container fluid>
-            <ThemeProvider theme={theme}>
-            <GlobalStyles styles={{
-              '.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: theme.palette.focus.main,
-              },
-            }} />
-                <Row className="row-cols-1">
-                    <div className="d-flex justify-content-center align-items-center titleContainer">
-                        <h1 className="title"><span style={{color:'#027d75ff'}}>Pre Job</span> Check</h1>
-                    </div>
-                    <form className="mt-4">
-                        <Col>
-                            {currentComponent}
-                        </Col>
-                        {show && (
-                          <Col className="alert">
-                            <AlertWarning text={'Compila tutti i campi richiesti !'}/>                          
-                          </Col>                       
-                        )}
-                        <div className="d-flex justify-content-end mt-4 mb-5">
-                            <Button className="me-4" onClick={previousGroup} variant="contained" color="primary" >Indietro</Button>
-                            <Button  onClick={nextGroup} variant="contained" color="primary" >{currentGroup === numOfGroup ? 'Fine' : 'Avanti'}</Button>                    
-                        </div>
-                    </form>
-                </Row>
-            </ThemeProvider>    
-
-            
-       </Container>
+      <Container fluid>       
+        <Row className="row-cols-1">
+          <div className="d-flex justify-content-center align-items-center titleContainer">
+              <h1 className="title"><span style={{color:'#027d75ff'}}>Pre Job</span> Check</h1>
+          </div>
+          <form className="mt-4">
+              <Col>
+                  {currentComponent}
+              </Col>
+              {show && (
+                <Col className="alert">
+                  <AlertWarning text={'Compila tutti i campi richiesti !'}/>                          
+                </Col>                       
+              )}
+              <div className="d-flex justify-content-end mt-4 mb-5">
+                  <Button className="me-4" onClick={previousGroup} variant="contained" color="primary" >Indietro</Button>
+                  <Button  onClick={nextGroup} variant="contained" color="primary" >{currentGroup === numOfGroup ? 'Fine' : 'Avanti'}</Button>                    
+              </div>
+          </form>
+        </Row>    
+      </Container>
     )
 }
 
