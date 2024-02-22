@@ -17,7 +17,6 @@ const Generals = (props)=>{
         props.handleGeneral(name, value);
     };
     //DateTimePicker non restituisce un oggetto "e", perciò non possiamo usare la destrutturazione name , value
-    //Usiamo un altro modo, creando una nuova funzione che passa a handleGeneral il valore restituito dal DateTimePicker
     const handleDateTimeChange = (newValue) => {
         props.handleGeneral("time", newValue);
     };

@@ -40,7 +40,7 @@ const Dashboard = ()=>{
                 const prejobData = params.row;
                 return (
                     <Button  variant='contained' color='primary' type="button" className="pdfContainer p-1">
-                        {/* <DownloadIcon/> */}
+                        
                         <PDFDownloadLink
                             document={<PdfContent prejobData={prejobData} />}
                             fileName={`prejob_${prejobData._id}.pdf`}
