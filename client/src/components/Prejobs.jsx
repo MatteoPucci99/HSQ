@@ -7,8 +7,6 @@ import Generals from "./PrejobsModules/Generals"
 import InCharge from "./PrejobsModules/InCharge"
 import Note from "./PrejobsModules/Note"
 import Workers from "./PrejobsModules/Workers"
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { GlobalStyles } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux"
 import { sendPrejobAction } from "../redux/actions/prejob";
@@ -21,7 +19,7 @@ import AlertSuccess from "./Alert/AlertSuccess";
 const Prejobs = ()=>{
     const [showWarning, setShowWarning] = useState(false)
     const [showSuccess, setShowSuccess] = useState(false)
-    
+
     const handleShowSuccess = (input)=> {
       setShowSuccess(input)
       setTimeout(()=>{
