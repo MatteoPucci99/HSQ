@@ -142,10 +142,10 @@ const PdfContent = (props)=>{
             </View>
           </View>
     
-          {props.prejobData.workers.map(worker=>{
+          {props.prejobData.workers.map((worker,index)=>{
             return ( 
               
-              <View style={styles.signatureContainer}>
+            <View style={styles.signatureContainer} key={`${index}-de`}>
               <Text style={styles.subSignature}>
                   Firma dipendente :
               </Text>
