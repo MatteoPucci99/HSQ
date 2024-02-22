@@ -13,12 +13,21 @@ import { useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux"
 import { sendPrejobAction } from "../redux/actions/prejob";
 import AlertWarning from "./Alert/AlertWarning";
+import AlertSuccess from "./Alert/AlertSuccess";
 
 
 
 
 const Prejobs = ()=>{
-    const [show, setShow] = useState(false)
+    const [showWarning, setShowWarning] = useState(false)
+    const [showSuccess, setShowSuccess] = useState(false)
+    
+    const handleShowSuccess = (input)=> {
+      setShowSuccess(input)
+      setTimeout(()=>{
+        setShowSuccess(false)
+      },1500)
+    }
     const dispatch = useDispatch()
     const navigate = useNavigate()
  
@@ -82,17 +91,19 @@ const Prejobs = ()=>{
     //Funzione per gestire i gruppi di input successivi
     const nextGroup = ()=>{
         if(currentGroup === numOfGroup && isCompiled()){
-          dispatch(sendPrejobAction(preJob))
+          dispatch(sendPrejobAction(preJob,handleShowSuccess))
           setCurrentPreJob(initialPrejob)
-          setCurrentGroup(1)
           setButtonState(initialButtonState)
+          setTimeout(()=>{
+            setCurrentGroup(1)
+          },3000)
           return;
         } 
         if(currentGroup < numOfGroup && isCompiled()){
             setCurrentGroup(currentGroup+1)
         } else {
-          setShow(true);
-          setTimeout(()=>{setShow(false)},1500)
+          setShowWarning(true);
+          setTimeout(()=>{setShowWarning(false)},1500)
         }
     }
     //Funzione per gestire i gruppi di input precedenti
@@ -210,9 +221,14 @@ const Prejobs = ()=>{
               <Col>
                   {currentComponent}
               </Col>
-              {show && (
+              {showWarning && (
                 <Col className="alert">
-                  <AlertWarning text={'Compila tutti i campi richiesti !'}/>                          
+                  <AlertWarning text={'Compila tutti i campi richiesti !'}/>     
+                </Col>                       
+              )}
+                {showSuccess && (
+                <Col className="alert">
+                  <AlertSuccess text={'Pre Job inviato con successo!'}/>     
                 </Col>                       
               )}
               <div className="d-flex justify-content-end mt-4 mb-5">

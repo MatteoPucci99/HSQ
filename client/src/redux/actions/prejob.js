@@ -3,7 +3,7 @@ export const SEND_PREJOB = "SEND_PREJOB";
 export const GET_PREJOBS = "GET_PREJOBS";
 
 //Action per inviare un prejob
-export const sendPrejobAction = (obj) => {
+export const sendPrejobAction = (obj, handleSuccessAlert) => {
   return async (dispatch) => {
     fetch(`${API}/savedPrejobs`, {
       method: "POST",
@@ -24,6 +24,7 @@ export const sendPrejobAction = (obj) => {
           type: SEND_PREJOB,
           payload: preJob,
         });
+        handleSuccessAlert(true);
         dispatch(getPrejobAction());
       })
       .catch((err) => {

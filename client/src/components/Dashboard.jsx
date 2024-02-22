@@ -88,7 +88,7 @@ const Dashboard = ()=>{
                        }
                        
                     }}                 
-                    
+                    disableRowSelectionOnClick  
                 />
             </Col>
             <Col className="mt-4 text-end">
