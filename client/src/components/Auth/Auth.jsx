@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import logo from "../../imgs/logo.png";
+import logo from "../../imgs/logo2.png";
 import { signInAction, signUpAction } from "../../redux/actions/auth";
 import AlertWarning from "../Alert/AlertWarning";
 
@@ -14,6 +14,7 @@ const Auth = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    role: "user",
   };
 
   const [user, setUser] = useState(initialUser);
