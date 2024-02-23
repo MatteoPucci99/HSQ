@@ -7,7 +7,7 @@ export const createPrejob = async (req, res) => {
     const newPrejob = new Prejob({
       ...prejobData,
       createdBy: req.userId,
-      createdAt: new Date().toISOString(), // Supponendo che l'ID dell'utente sia disponibile in req.user._id
+      createdAt: new Date().toISOString(),
     });
     await newPrejob.save();
     res.status(201).json(newPrejob);
