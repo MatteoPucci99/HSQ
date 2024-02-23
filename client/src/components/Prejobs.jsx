@@ -229,32 +229,36 @@ const Prejobs = () => {
             <span style={{ color: "#027d75ff" }}>Pre Job</span> Check
           </h1>
         </div>
-        <form className="mt-4">
-          <Col>{currentComponent}</Col>
-          {showWarning && (
-            <Col className="alert">
-              <AlertWarning text={"Compila tutti i campi richiesti !"} />
+        <div className="d-lg-flex justify-content-center">
+          <form className="mt-4 prejobContainer">
+            <Col>
+              {currentComponent}
+              <div className="d-flex justify-content-end mt-4 mb-5">
+                <Button
+                  className="me-4"
+                  onClick={previousGroup}
+                  variant="contained"
+                  color="primary"
+                >
+                  Indietro
+                </Button>
+                <Button onClick={nextGroup} variant="contained" color="primary">
+                  {currentGroup === numOfGroup ? "Fine" : "Avanti"}
+                </Button>
+              </div>
             </Col>
-          )}
-          {showSuccess && (
-            <Col className="alert">
-              <AlertSuccess text={"Pre Job inviato con successo!"} />
-            </Col>
-          )}
-          <div className="d-flex justify-content-end mt-4 mb-5">
-            <Button
-              className="me-4"
-              onClick={previousGroup}
-              variant="contained"
-              color="primary"
-            >
-              Indietro
-            </Button>
-            <Button onClick={nextGroup} variant="contained" color="primary">
-              {currentGroup === numOfGroup ? "Fine" : "Avanti"}
-            </Button>
-          </div>
-        </form>
+            {showWarning && (
+              <Col className="alert">
+                <AlertWarning text={"Compila tutti i campi richiesti !"} />
+              </Col>
+            )}
+            {showSuccess && (
+              <Col className="alert">
+                <AlertSuccess text={"Pre Job inviato con successo!"} />
+              </Col>
+            )}
+          </form>
+        </div>
       </Row>
     </Container>
   );
