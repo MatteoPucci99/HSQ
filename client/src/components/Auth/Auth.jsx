@@ -151,7 +151,7 @@ const Auth = () => {
           </Col>
         )}
       </Row>
-      <Row className="mt-3 fw-bold">
+      <Row className="mt-5 fw-bold">
         <Button onClick={switchMode}>
           {isSignup
             ? "Hai già un account? Fai il Log in"

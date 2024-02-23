@@ -19,6 +19,7 @@ export const signInAction = (userData, navigate) => {
         }
       })
       .then((data) => {
+        localStorage.setItem("profile", JSON.stringify(data));
         dispatch({
           type: AUTH,
           payload: data,
@@ -47,6 +48,7 @@ export const signUpAction = (userData, navigate) => {
         }
       })
       .then((data) => {
+        localStorage.setItem("profile", JSON.stringify(data));
         dispatch({
           type: AUTH,
           payload: data,
