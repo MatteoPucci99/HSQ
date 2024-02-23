@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { getPrejobAction } from "./redux/actions/prejob";
 import { GlobalStyles, ThemeProvider, createTheme } from "@mui/material";
 import { itIT } from "@mui/material/locale";
+import Auth from "./components/Auth/Auth";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,7 +41,8 @@ function App() {
           }}
         />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Auth />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/prejobs" element={<Prejobs />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>

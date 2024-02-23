@@ -1,4 +1,4 @@
-import { API } from "./prejob"; // signin : /signin    signup: /signup
+export const API = "http://localhost:5002/user"; // signin : /signin    signup: /signup
 export const AUTH = "AUTH";
 export const LOGOUT = "LOGOUT";
 
@@ -23,6 +23,7 @@ export const signInAction = (userData, navigate) => {
           type: AUTH,
           payload: data,
         });
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);
@@ -50,6 +51,7 @@ export const signUpAction = (userData, navigate) => {
           type: AUTH,
           payload: data,
         });
+        navigate("/home");
       })
       .catch((err) => {
         console.log(err);

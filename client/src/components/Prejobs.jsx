@@ -112,7 +112,7 @@ const Prejobs = () => {
   //Funzione per gestire i gruppi di input precedenti
   const previousGroup = () => {
     if (currentGroup === 1) {
-      navigate("/");
+      navigate("/home");
     }
     if (currentGroup > 0) {
       setCurrentGroup(currentGroup - 1);

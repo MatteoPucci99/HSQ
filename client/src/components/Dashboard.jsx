@@ -106,7 +106,7 @@ const Dashboard = () => {
         <Col className="mt-4 text-end">
           <Button
             variant="contained"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/home")}
             color="primary"
           >
             Home

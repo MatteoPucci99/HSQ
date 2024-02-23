@@ -5,6 +5,7 @@
 @import url(./assets/homeCards.css);
 @import url(./assets/generals.css);
 @import url(./assets/alert.css);
+@import url(./assets/auth.css);
 
 body {
   font-family: "Montserrat", sans-serif !important;

@@ -16,3 +16,28 @@
     width: 60%;
   }
 }
+
+/* Gestione layout nella sezione login per dimensione inputfield per telefoni,tablet,pc*/
+@media screen and (max-width: 576px) {
+  .loginWidth {
+    width: 95%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .loginWidth {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .loginWidth {
+    width: 50%;
+  }
+}
+
+/* LOGIN INPUT STYLE */
+
+.loginInput {
+  background-color: white;
+}
