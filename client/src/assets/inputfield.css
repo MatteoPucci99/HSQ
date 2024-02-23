@@ -24,15 +24,26 @@
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 576px) and (max-width: 1024px) {
   .loginWidth {
-    width: 50%;
+    width: 70%;
   }
 }
 
 @media screen and (min-width: 1025px) {
   .loginWidth {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1285px) {
+  .loginWidth {
     width: 50%;
+  }
+}
+@media screen and (min-width: 1920px) {
+  .loginWidth {
+    width: 40%;
   }
 }
 
