@@ -16,6 +16,7 @@ const InCharge = (props) => {
     props.updateInCharge(name, value);
   };
 
+  //Salvo la firma
   const handleSave = () => {
     if (signatureRef.current) {
       const signature = signatureRef.current.toDataURL();
@@ -23,6 +24,8 @@ const InCharge = (props) => {
       props.updateSignature(signature);
     }
   };
+
+  //Pulisco il canvas e resetto lo stato
   const handleClear = () => {
     if (signatureRef.current) {
       signatureRef.current.clear();

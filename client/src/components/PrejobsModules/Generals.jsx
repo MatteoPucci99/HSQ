@@ -1,8 +1,8 @@
-import { Col, Row } from "react-bootstrap";
 import { TextField } from "@mui/material";
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { Col, Row } from "react-bootstrap";
 
 const Generals = (props) => {
   const handleInputChange = (e) => {

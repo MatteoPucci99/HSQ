@@ -1,14 +1,17 @@
+//MUI
 import DownloadIcon from "@mui/icons-material/Download";
 import { Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+//pdfRenderer
 import { PDFDownloadLink } from "@react-pdf/renderer";
 //dateFns
 import { format } from "date-fns";
 import itLocale from "date-fns/locale/it";
-
+//Bootstrap, redux, router
 import { Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import PdfContent from "./Pdf/PrejobPdf";
 
 const Dashboard = () => {

@@ -47,6 +47,7 @@ const Prejobs = (props) => {
       prevIndex < prejobsQuestions.length - 1 ? prevIndex + 1 : prevIndex
     );
   };
+
   //Funzione per gestire lo scroll al top della pagina quando si premono le frecce di scorrimento delle domande
   const handleScroll = () => {
     window.scrollTo({

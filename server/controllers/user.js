@@ -5,6 +5,7 @@ import UserModal from "../models/user.js";
 
 const secret = "test";
 
+//Controller per logIn
 export const signin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -28,7 +29,7 @@ export const signin = async (req, res) => {
     res.status(500).json({ message: "Something went wrong" });
   }
 };
-
+//Controller per registrazione utente
 export const signup = async (req, res) => {
   const { email, password, firstName, lastName, role } = req.body;
 

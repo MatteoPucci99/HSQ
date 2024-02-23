@@ -1,8 +1,10 @@
+//Bootstrap & MUI
 import Button from "@mui/material/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+//prejobsQuestions
 import prejobsQuestions from "../content/preJobs/prejobs";
 //Action
 import { sendPrejobAction } from "../redux/actions/prejob";

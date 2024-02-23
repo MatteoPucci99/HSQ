@@ -16,8 +16,9 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const isAuthRequired = location.pathname !== "/";
+  //Recuper user
   const user = JSON.parse(localStorage.getItem("profile"));
-  console.log(user);
+  //Verifico presenza di user e gestisco la navigazione
   useEffect(() => {
     if (isAuthRequired && (!user || !user.token)) {
       navigate("/");

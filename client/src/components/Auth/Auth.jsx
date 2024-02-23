@@ -1,15 +1,21 @@
+//MUI & Bootstrap
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+//Redux & router
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+//Logo
 import logo from "../../imgs/logo2.png";
+//Action
 import { signInAction, signUpAction } from "../../redux/actions/auth";
+//Alert
 import AlertWarning from "../Alert/AlertWarning";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Auth = () => {
+  //Inizializzazione stato utente
   const initialUser = {
     firstName: "",
     lastName: "",
@@ -18,15 +24,17 @@ const Auth = () => {
     confirmPassword: "",
     role: "user",
   };
-
   const [user, setUser] = useState(initialUser);
   const [isSignup, setIsSignup] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //Gestione visualizazione password
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword(!showPassword);
 
+  //Gestione alertWarning
   const [showWarning, setShowWarning] = useState(false);
   const showAlert = () => {
     setShowWarning(true);
@@ -35,14 +43,15 @@ const Auth = () => {
     }, 1500);
   };
 
+  //Switch da signUp a singIN
   const switchMode = () => {
     setUser(initialUser);
     setIsSignup((prevState) => !prevState);
     setShowPassword(false);
   };
 
+  //Validazione input
   const signInCase = user.email.trim() === "" || user.password.trim() === "";
-
   const isValidData = () => {
     if (!isSignup) {
       if (signInCase) {
@@ -60,6 +69,8 @@ const Auth = () => {
     }
     return true;
   };
+
+  //Gestione form
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isValidData()) {
@@ -70,6 +81,8 @@ const Auth = () => {
       }
     }
   };
+
+  //Gestione input
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUser({

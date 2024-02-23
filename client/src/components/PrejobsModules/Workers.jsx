@@ -1,9 +1,13 @@
+//MUI
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { TextField } from "@mui/material";
 import Button from "@mui/material/Button";
+//
 import { useRef, useState } from "react";
+//Bootstrap
 import { Col, Container, Row } from "react-bootstrap";
+//signCanvas
 import SignatureCanvas from "react-signature-canvas";
 
 const Workers = (props) => {
