@@ -69,48 +69,52 @@ const Dashboard = () => {
 
   return (
     <Container fluid className="text-center">
-      <Row className="row-cols-1" style={{ height: 400 }}>
+      <Row className="row-cols-1">
         <Col className="titleContainer d-flex align-items-center justify-content-center">
           <h1 className="title">
             <span style={{ color: "#027d75ff" }}>Admin</span> Dashboard
           </h1>
         </Col>
-        <Col className="mt-4">
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            getRowId={getRowId}
-            initialState={{
-              pagination: {
-                paginationModel: { page: 0, pageSize: 5 },
-              },
-            }}
-            pageSizeOptions={[5, 10, 15]}
-            checkboxSelection
-            sx={{
-              "& .MuiTablePagination-selectLabel": {
-                marginBottom: "0px",
-                display: "block !important",
-              },
-              "& .MuiTablePagination-displayedRows": {
-                marginBottom: "0px",
-              },
-              "& .MuiInputBase-root.MuiInputBase-colorPrimary.MuiTablePagination-input":
-                {
-                  display: "flex !important",
-                },
-            }}
-            disableRowSelectionOnClick
-          />
-        </Col>
-        <Col className="mt-4 text-end">
-          <Button
-            variant="contained"
-            onClick={() => navigate("/home")}
-            color="primary"
-          >
-            Home
-          </Button>
+        <Col className="mt-5 d-lg-flex justify-content-center">
+          <div className="gridContainer">
+            <div>
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                getRowId={getRowId}
+                initialState={{
+                  pagination: {
+                    paginationModel: { page: 0, pageSize: 5 },
+                  },
+                }}
+                pageSizeOptions={[5, 10, 15]}
+                checkboxSelection
+                sx={{
+                  "& .MuiTablePagination-selectLabel": {
+                    marginBottom: "0px",
+                    display: "block !important",
+                  },
+                  "& .MuiTablePagination-displayedRows": {
+                    marginBottom: "0px",
+                  },
+                  "& .MuiInputBase-root.MuiInputBase-colorPrimary.MuiTablePagination-input":
+                    {
+                      display: "flex !important",
+                    },
+                }}
+                disableRowSelectionOnClick
+              />
+            </div>
+            <Col className="mt-4 text-end">
+              <Button
+                variant="contained"
+                onClick={() => navigate("/home")}
+                color="primary"
+              >
+                Home
+              </Button>
+            </Col>
+          </div>
         </Col>
       </Row>
     </Container>

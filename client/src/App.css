@@ -6,6 +6,7 @@
 @import url(./assets/generals.css);
 @import url(./assets/alert.css);
 @import url(./assets/auth.css);
+@import url(./assets/dashboard.css);
 
 body {
   font-family: "Montserrat", sans-serif !important;

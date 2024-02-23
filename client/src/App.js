@@ -1,21 +1,15 @@
-import "./App.css";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./components/Home";
-import Prejobs from "./components/Prejobs";
-import Dashboard from "./components/Dashboard";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getPrejobAction } from "./redux/actions/prejob";
 import { GlobalStyles, ThemeProvider, createTheme } from "@mui/material";
 import { itIT } from "@mui/material/locale";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import "./App.css";
 import Auth from "./components/Auth/Auth";
+import Dashboard from "./components/Dashboard";
+import Home from "./components/Home";
+import Prejobs from "./components/Prejobs";
+import { getPrejobAction } from "./redux/actions/prejob";
 function App() {
   const dispatch = useDispatch();
 
