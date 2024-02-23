@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
 import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../imgs/logo2.png";
 import { signInAction, signUpAction } from "../../redux/actions/auth";
 import AlertWarning from "../Alert/AlertWarning";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const Auth = () => {
   const initialUser = {
@@ -22,8 +24,8 @@ const Auth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [showPassowrd, setShowPassword] = useState(false);
-  const handleShowPassword = () => setShowPassword(!showPassowrd);
+  const [showPassword, setShowPassword] = useState(false);
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
   const [showWarning, setShowWarning] = useState(false);
   const showAlert = () => {
@@ -118,6 +120,7 @@ const Auth = () => {
           </Col>
           <Col className="mt-3">
             <TextField
+              type={showPassword ? "text" : "password"}
               label="Password"
               name="password"
               value={user.password}
@@ -125,11 +128,25 @@ const Auth = () => {
               variant="outlined"
               className="loginInput"
               style={{ width: "100%" }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </Col>
           {isSignup && (
             <Col className="mt-3">
               <TextField
+                type={showPassword ? "text" : "password"}
                 label="Conferma password"
                 name="confirmPassword"
                 value={user.confirmPassword}
