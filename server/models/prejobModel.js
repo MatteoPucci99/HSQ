@@ -47,6 +47,11 @@ const prejobSchema = new mongoose.Schema({
   inCharge: String,
   signature: String,
   workers: [],
+  createdBy: String,
+  createdAt: {
+    type: Date,
+    default: new Date(),
+  },
 });
 
 const Prejob = mongoose.model("Session", prejobSchema);

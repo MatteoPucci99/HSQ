@@ -4,7 +4,11 @@ import Prejob from "../models/prejobModel.js"; // Importa il modello Prejob
 export const createPrejob = async (req, res) => {
   try {
     const prejobData = req.body; // Dati del nuovo prejob
-    const newPrejob = new Prejob(prejobData);
+    const newPrejob = new Prejob({
+      ...prejobData,
+      createdBy: req.userId,
+      createdAt: new Date().toISOString(), // Supponendo che l'ID dell'utente sia disponibile in req.user._id
+    });
     await newPrejob.save();
     res.status(201).json(newPrejob);
   } catch (error) {

@@ -6,10 +6,6 @@ export const GET_PREJOBS = "GET_PREJOBS";
 const fetchWithAuthorization = async (url, options = {}) => {
   const profile = JSON.parse(localStorage.getItem("profile"));
 
-  // if (!profile) {
-  //   throw new Error("Toker di autorizzazione non trovato");
-  // }
-
   if (profile) {
     options.headers = {
       ...options.headers,
