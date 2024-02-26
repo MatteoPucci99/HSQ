@@ -54,7 +54,7 @@ const InCharge = (props) => {
           <Col className="border p-2">
             <SignatureCanvas
               penColor="black"
-              canvasProps={{ height: 200, className: "myCanvas" }}
+              canvasProps={{ height: 350, className: "myCanvas" }}
               ref={signatureRef}
               onEnd={handleSave}
             />

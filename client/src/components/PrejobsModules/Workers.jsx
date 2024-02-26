@@ -9,8 +9,24 @@ import { useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 //signCanvas
 import SignatureCanvas from "react-signature-canvas";
+import AlertWarning from "../Alert/AlertWarning";
+import AlertSuccess from "../Alert/AlertSuccess";
 
 const Workers = (props) => {
+  const [showWarning, setShowWarning] = useState(false);
+  const [showSucces, setShowSuccess] = useState(false);
+  const warningAlert = () => {
+    setShowWarning(true);
+    setTimeout(() => {
+      setShowWarning(false);
+    }, 1500);
+  };
+  const successAlert = () => {
+    setShowSuccess(true);
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 1500);
+  };
   // Inizializzo l'useRef per prendere la referenza del componente canvas
   const signatureRef = useRef(null);
 
@@ -42,7 +58,7 @@ const Workers = (props) => {
   const isValidData = () => {
     for (const key in worker) {
       if (worker[key].trim() === "") {
-        return false, alert("Compila tutti i campi richiesti");
+        return false, warningAlert();
       }
     }
     return true;
@@ -57,6 +73,7 @@ const Workers = (props) => {
         signature: "",
       }));
       signatureRef.current.clear();
+      successAlert();
     }
   };
 
@@ -83,7 +100,7 @@ const Workers = (props) => {
         <Col className="border p-2 text-center">
           <SignatureCanvas
             penColor="black"
-            canvasProps={{ height: 200, className: "myCanvas" }}
+            canvasProps={{ height: 350, className: "myCanvas" }}
             ref={signatureRef}
             onEnd={handleSave}
           />
@@ -106,6 +123,16 @@ const Workers = (props) => {
             </Button>
           </div>
         </Col>
+        {showWarning && (
+          <Col className="alert">
+            <AlertWarning text={"Compila tutti i campi richiesti !"} />
+          </Col>
+        )}
+        {showSucces && (
+          <Col className="alert">
+            <AlertSuccess text={"Firma salvata con successo!"} />
+          </Col>
+        )}
       </Row>
     </Container>
   );
