@@ -23,7 +23,7 @@ const fetchWithAuthorization = async (url, options = {}) => {
 };
 
 //Action per inviare un prejob
-export const sendPrejobAction = (obj, handleSuccessAlert) => {
+export const sendPrejobAction = (obj) => {
   return async (dispatch) => {
     fetchWithAuthorization(`${API}/savedPrejobs`, {
       method: "POST",
@@ -44,7 +44,7 @@ export const sendPrejobAction = (obj, handleSuccessAlert) => {
           type: SEND_PREJOB,
           payload: preJob,
         });
-        handleSuccessAlert(true);
+        //handleSuccessAlert(true);
         dispatch(getPrejobAction());
       })
       .catch((err) => {

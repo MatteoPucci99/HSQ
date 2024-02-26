@@ -10,6 +10,7 @@ import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Prejobs from "./components/Prejobs";
 import { getPrejobAction } from "./redux/actions/prejob";
+import SuccessPrejob from "./components/PrejobsModules/SuccessPrejob";
 function App() {
   const dispatch = useDispatch();
 
@@ -62,6 +63,7 @@ function App() {
         {user?.result.role === "admin" && (
           <Route path="/dashboard" element={<Dashboard />} />
         )}
+        <Route path="/success" element={<SuccessPrejob />} />
       </Routes>
     </ThemeProvider>
   );

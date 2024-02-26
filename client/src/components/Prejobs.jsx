@@ -94,13 +94,10 @@ const Prejobs = () => {
   //Funzione per gestire i gruppi di input successivi
   const nextGroup = () => {
     if (currentGroup === numOfGroup && isCompiled()) {
-      dispatch(sendPrejobAction(preJob, handleShowSuccess));
+      dispatch(sendPrejobAction(preJob));
       setCurrentPreJob(initialPrejob);
       setButtonState(initialButtonState);
-      setTimeout(() => {
-        setCurrentGroup(1);
-      }, 3000);
-      return;
+      navigate("/success");
     }
     if (currentGroup < numOfGroup && isCompiled()) {
       setCurrentGroup(currentGroup + 1);
