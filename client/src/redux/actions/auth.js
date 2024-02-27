@@ -18,7 +18,7 @@ export const signInAction = (userData, navigate) => async (dispatch) => {
 //Funzione per il signUp
 export const signUpAction = (userData, navigate) => async (dispatch) => {
   try {
-    const { data } = await api.signIn(userData);
+    const { data } = await api.signUp(userData);
 
     localStorage.setItem("profile", JSON.stringify(data));
     dispatch({ type: AUTH, payload: data });
