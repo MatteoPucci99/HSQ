@@ -1,6 +1,8 @@
-import { Col, Container, Row } from "react-bootstrap";
+//mui
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { Button } from "@mui/material";
+//
+import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const SuccessPrejob = () => {

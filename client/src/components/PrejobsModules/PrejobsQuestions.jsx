@@ -1,7 +1,10 @@
 import Button from "@mui/material/Button";
+//
 import React, { useState } from "react";
+//
 import { Col, Container, Row } from "react-bootstrap";
 import { TfiArrowCircleLeft, TfiArrowCircleRight } from "react-icons/tfi";
+//pjQuestions
 import prejobsQuestions from "../../content/preJobs/prejobs";
 
 const Prejobs = (props) => {

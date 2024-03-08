@@ -1,16 +1,21 @@
+//mui & bootstrap
 import { GlobalStyles, ThemeProvider, createTheme } from "@mui/material";
 import { itIT } from "@mui/material/locale";
 import "bootstrap/dist/css/bootstrap.min.css";
+//
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
+//components
 import Auth from "./components/Auth/Auth";
 import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Prejobs from "./components/Prejobs";
-import { getPrejobAction } from "./redux/actions/prejob";
 import SuccessPrejob from "./components/PrejobsModules/SuccessPrejob";
+//action
+import { getPrejobAction } from "./redux/actions/prejob";
+
 function App() {
   const dispatch = useDispatch();
 
